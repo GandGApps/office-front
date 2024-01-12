@@ -27,6 +27,7 @@
       "@features/*": ["features/*"],
       "@pages/*": ["pages/*"],
       "@widgets/*": ["widgets/*"],
+      "@assets/*": ["shared/assets/*"],
       "@components/*": ["shared/components/*"],
       "@configs/*": ["shared/configs/*"],
       "@styles/*": ["shared/styles/*"],

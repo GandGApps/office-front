@@ -1,11 +1,11 @@
-import { Button } from "@components/Button";
+import { Sidebar } from '@widgets/Sidebar';
+import styles from './Main.module.scss';
 
 function Main() {
     return(
-        <>
-            Main
-            <Button>Hello</Button>
-        </>
+        <div className={styles.page}>
+            <Sidebar />
+        </div>
     );
 };
 

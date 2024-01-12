@@ -1,0 +1,12 @@
+.default {
+    width: 100%;
+    background-color: $white;
+    border-radius: 45px;
+    border: 1px solid $white;
+    outline: none;
+    padding: 10px 40px 10px 15px;
+}
+
+.default::placeholder {
+    color: $main;
+}
