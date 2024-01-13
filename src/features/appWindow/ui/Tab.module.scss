@@ -1,0 +1,57 @@
+.tab {
+    display: flex;
+    padding: 8px 10px;
+    column-gap: 5px;
+    background-color: rgba(255, 255, 255, .65);
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+    text-decoration: none;
+    color: $main;
+    max-width: 250px;
+    position: relative;
+    .tip {
+        position: absolute;
+        bottom: -100%;
+        background-color: rgba(100, 100, 100, .2);
+        color: $black;
+        opacity: .8;
+        padding: 5px;
+        border-radius: 5px;
+        transition: all linear .2s;
+        white-space: nowrap;
+    }
+    
+}
+
+.tab:active {
+    color: $main;
+}
+
+.active_tab {
+    background-color: $white;
+    color: $contrast;
+}
+
+.active_tab:active {
+    color: $contrast;
+}
+
+.tab p {
+    margin: 0 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.close_button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+        width: 15px;
+    }
+}
+

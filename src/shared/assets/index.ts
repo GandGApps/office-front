@@ -15,6 +15,7 @@ import CrownIcon from './img/crown-icon.svg';
 import DeliveryIcon from './img/delivery-icon.svg';
 import SettingsIcon from './img/settings-icon.svg';
 import FaqIcon from './img/faq-icon.svg';
+import CloseIcon from './img/close-icon.svg';
 
 export {
     Logo,
@@ -33,5 +34,6 @@ export {
     CrownIcon,
     DeliveryIcon,
     SettingsIcon,
-    FaqIcon
+    FaqIcon,
+    CloseIcon
 };

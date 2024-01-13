@@ -31,7 +31,9 @@
       "@components/*": ["shared/components/*"],
       "@configs/*": ["shared/configs/*"],
       "@styles/*": ["shared/styles/*"],
-      "@utils/*": ["shared/utils/*"]
+      "@utils/*": ["shared/utils/*"],
+      "@hooks/*": ["shared/hooks/*"],
+      "@types/*": ["shared/types/*"]
     }
   },
   "include": ["src"],
