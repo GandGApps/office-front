@@ -1,0 +1,73 @@
+.button {
+    cursor: pointer;
+}
+
+.button:active {
+    opacity: .7;
+}
+
+.button:disabled {
+    opacity: .5;
+}
+
+.default {
+
+}
+
+.goods_filter_blue {
+    padding: 5px 15px;
+    border-radius: 38px;
+    border: 1px solid $blue;
+    background-color: $blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
+    color: $white;
+    cursor: pointer;
+}
+
+.goods_filter_green {
+    padding: 5px 15px;
+    border-radius: 38px;
+    border: 1px solid $green;
+    background-color: $green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
+    color: $white;
+    cursor: pointer;
+}
+
+.goods_filter_transparent_main {
+    padding: 5px 15px;
+    border-radius: 38px;
+    border: 1px solid $main;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
+    color: $contrast;
+}
+
+.transparent {
+    background: none;
+    border: 1px solid transparent;
+    padding: 0;
+}
+
+.flex_centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.table_folder_arrow {
+    margin-right: 5px;
+}
+
+.table_folder_arrow_opened {
+    transform: rotate(90deg);
+}

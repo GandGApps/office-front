@@ -36,7 +36,9 @@ function Sidebar() {
     }, [search]);
 
     const handleSelectSubcategory = (subcategory: Tab) => {
-        dispatch(addTab({tab: { title: subcategory.title, id: subcategory.id}, options: { setActive: true }}));
+        if (activeCategory !== null) {
+            dispatch(addTab({tab: { title: subcategory.title, id: subcategory.id, category_id: activeCategory}, options: { setActive: true }}));
+        }
     }
 
     return(
@@ -62,10 +64,10 @@ function Sidebar() {
                                     (item.id === activeCategory && SIDEBAR_SUBCATEGORIES[item.id].length > 0) &&
                                     <div className={styles.subcategories}>
                                         {
-                                            SIDEBAR_SUBCATEGORIES[item.id].map((subcategory, index) => (
+                                            SIDEBAR_SUBCATEGORIES[item.id].map((subcategory: Partial<Tab>, index) => (
                                                 <Link 
                                                     key={index}
-                                                    onClick={() => handleSelectSubcategory(subcategory)} 
+                                                    onClick={() => handleSelectSubcategory(subcategory as Tab)} 
                                                     className={clsx(styles.subcategory_link, activeTab?.title === subcategory.title && styles.active_subcategory_link)}
                                                     to="$">
                                                         {subcategory.title}

@@ -25,12 +25,6 @@ export const AppWindowSlice = createSlice({
                 state.activeTab = exists ? exists : action.payload.tab;
             }
         },
-        /**
-         * Remove tab from opened tabs
-         * @param state 
-         * @param action 
-         * @returns 
-         */
         removeTab: (state, action: PayloadAction<string>) => {
             const index = state.openTabs.findIndex(tab => tab.title === action.payload);
             if (index === -1) {

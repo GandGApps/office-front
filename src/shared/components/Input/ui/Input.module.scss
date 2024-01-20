@@ -10,3 +10,11 @@
 .default::placeholder {
     color: $main;
 }
+
+.goods-filter-search {
+    padding: 5px 15px;
+    border-radius: 65px;
+    border: 1px solid $contrast;
+    outline: none;
+    margin: 0 5px;
+}

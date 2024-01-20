@@ -16,6 +16,16 @@ import DeliveryIcon from './img/delivery-icon.svg';
 import SettingsIcon from './img/settings-icon.svg';
 import FaqIcon from './img/faq-icon.svg';
 import CloseIcon from './img/close-icon.svg';
+import WhitePlusRoundedIcon from './img/white-plus-rounded-icon.svg';
+import GrayReloadIcon from './img/gray-reload-icon.svg';
+import SelectArrowIcon from './img/select-arrow-icon.svg';
+
+import SearchRefreshIcon from './img/SearchRefreshIcon';
+import SearchArrowLeft from './img/SearchArrowLeft';
+import SearchArrowRight from './img/SearchArrowRight';
+import FolderIcon from './img/FolderIcon';
+import ColumnFilterArrowIcon from './img/ColumnFilterArrowIcon';
+import TableGoodIcon from './img/GoodIcon';
 
 export {
     Logo,
@@ -35,5 +45,14 @@ export {
     DeliveryIcon,
     SettingsIcon,
     FaqIcon,
-    CloseIcon
+    CloseIcon,
+    WhitePlusRoundedIcon,
+    GrayReloadIcon,
+    SelectArrowIcon,
+    SearchRefreshIcon,
+    SearchArrowLeft,
+    SearchArrowRight,
+    FolderIcon,
+    ColumnFilterArrowIcon,
+    TableGoodIcon
 };

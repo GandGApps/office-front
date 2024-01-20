@@ -12,5 +12,9 @@
     .view {
         flex: 1;
         background-color: $white;
+        position: relative;
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
     }
 }

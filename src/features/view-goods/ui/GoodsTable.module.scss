@@ -1,0 +1,78 @@
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    flex: 1;
+    thead {
+        position: sticky;
+        top: 0;
+        tr {
+            background-color: #EDF7FF;
+            border-top: 1px solid $contrast;
+            border-bottom: 1px solid $contrast;
+            th {
+                button {
+                    padding: 10px;
+                    width: 90%;
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    font-weight: 500;
+                    display: flex;
+                }
+                span {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin: 0 5px;
+                    transition: transform .1s linear;
+                }
+                .inactive_filter {
+                    
+                }
+                .active_filter {
+                    transform: rotate(180deg);
+                }
+            }
+            th:not(:last-child) {
+                border-right: 1px solid $contrast;
+            }
+            th:first-child {
+                button {
+                    padding: 10px 20px;
+                }
+            }
+        }
+    }
+    tbody {
+        tr {
+            cursor: pointer;
+            -webkit-user-select: none; /* Safari */
+            -ms-user-select: none; /* IE 10 and IE 11 */
+            user-select: none; /* Standard syntax */
+            td {
+                text-align: start;
+                padding: 0 10px;
+            }
+            .name_column {
+                padding: 5px 5px 5px 20px;
+                div {
+                    width: 140px;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                }
+            }
+            .folder_name_column {
+                padding: 5px 5px 5px 18px;
+            }
+            .article_column {}
+            .type_column {}
+        }
+        .odd_row {
+            background-color: #E2EBF1;
+        }
+        .selected_row {
+            background-color: rgba(141, 188, 221, .5);
+        }
+    }
+}

@@ -1,6 +1,7 @@
 import { CounterpartiesIcon, CrownIcon, DeliveryIcon, EmployeeIcon, ExchangeIcon, FaqIcon, FavoriteIcon, FileIcon, FinanceIcon, GoodIcon, IdCardIcon, ReportIcon, SettingsIcon, ShopIcon } from "@assets/index";
 import { ReactNode } from "react";
 import { MockView } from "@pages/Views/MockView";
+import { Goods } from "@pages/Views/Goods";
 
 type Subcategory = {
   [key: string]: {
@@ -40,7 +41,7 @@ export const SIDEBAR_SUBCATEGORIES: Subcategory = {
       { title: 'ABC XYZ анализ', id: '', view: <MockView /> },
     ],
     [SIDEBAR_CATEGORIES['Товары и склады'].id]: [
-      { title: 'Товары', id: '', view: <MockView /> },
+      { title: 'Товары', id: '', view: <Goods /> },
       { title: 'Блюда', id: '', view: <MockView /> },
       { title: 'Заготовки', id: '', view: <MockView /> },
       { title: 'Модификации', id: '', view: <MockView /> },
