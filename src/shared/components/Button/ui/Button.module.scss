@@ -64,10 +64,12 @@
     align-items: center;
 }
 
-.table_folder_arrow {
+.table_folder {
     margin-right: 5px;
+    font-weight: 300;
+    font-size: 16px;
 }
 
-.table_folder_arrow_opened {
+.table_folder_opened {
     transform: rotate(90deg);
 }

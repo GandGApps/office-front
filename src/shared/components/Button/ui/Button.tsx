@@ -8,12 +8,14 @@ type Props = {
     onClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
     projectType?: string[];
     disabled?: boolean;
+    style?: React.CSSProperties | undefined
 }
 
-function Button({ children, onClick, projectType=["default"], type="button", disabled=false }: Props) {
+function Button({ children, onClick, projectType=["default"], type="button", disabled=false, style}: Props) {
     return(
         <button 
             type={type}
+            style={style}
             onClick={onClick}
             disabled={disabled}
             className={clsx(styles.button, ...projectType.map((cn) => styles[cn]))}>{children}</button>

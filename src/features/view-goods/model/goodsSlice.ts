@@ -2,6 +2,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 import { TableColumnEnum } from "../constants/tableColumn.enum";
 import { TGood } from "../types/good";
 import { MOCK_GOODS } from "../constants/mock-goods";
+import { updateFolderOpenState } from "./table-helper";
 
 export type GoodsViewState = {
     filter: {
@@ -78,8 +79,8 @@ export const GoodsViewSlice = createSlice({
          * Set folder open status
          * @param action.payload folder depth
          */
-        setFolderOpen: (state, action: PayloadAction<number>) => {
-            
+        setFolderOpenState: (state, action: PayloadAction<{folderQueue: string[], folderId: string}>) => {
+            state.goods = updateFolderOpenState(state.goods, action.payload.folderQueue, action.payload.folderId, "open" as keyof TGood)
         }
     },
 });
@@ -89,6 +90,7 @@ export const {
     setStatus,
     setError,
     setSortColumn,
-    setSelectedItem
+    setSelectedItem,
+    setFolderOpenState
 } = GoodsViewSlice.actions;
 export default GoodsViewSlice;

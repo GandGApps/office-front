@@ -28,4 +28,4 @@ export const TABLE_COLUMNS = {
     [TableColumnEnum.SELL_LOCATION]: {
         title: 'Место продаж'
     },
-}
+};

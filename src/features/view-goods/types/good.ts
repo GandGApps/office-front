@@ -3,7 +3,7 @@ import { GoodUnitEnum } from "../enums/goodUnit.enum";
 
 export type TGood = TFolderItem | TGoodItem;
 
-type TFolderItem = {
+export type TFolderItem = {
     id: string;
     name: string;
     article: string;

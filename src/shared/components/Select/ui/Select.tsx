@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import styles from './Select.module.scss';
 import { SelectArrowIcon } from '@assets/index';
 
@@ -10,7 +10,6 @@ function Select() {
     function handleSelectClick() {
         setSelectOpen(prev => !prev);
     }
-    console.log(selectOpen);
     return(
         <div 
             className={styles.select_container}
@@ -28,4 +27,4 @@ function Select() {
     );
 };
 
-export default Select;
+export default memo(Select);
