@@ -9,14 +9,17 @@ import { useAppDispatch } from '@hooks/useAppDispatch';
 import { setSortColumn, setSelectedItem, setFolderOpenState } from '../model/goodsSlice';
 import { GoodTypeEnum } from '../enums/goodType.enum';
 import { TGood } from '../types/good';
-import { Fragment, ReactNode, memo } from 'react';
+import { Fragment, ReactNode, memo, useMemo } from 'react';
 import { Button } from '@components/Button';
 import useGoodsTableResize from '../hooks/useGoodsTableResize';
+import useTableContextMenu from '../hooks/useTableContextMenu';
+import { ContextMenu } from '@components/ContextMenu';
 
 function GoodsTable() {
     const dispatch = useAppDispatch();
     const { sortColumn, goods, selectedGoods } = useAppSelector<GoodsViewState>(state => state.GoodsView);
     const {onMouseDown, tableRef, columnWidths} = useGoodsTableResize();
+    const {onContextMenu, openContextMenu, points} = useTableContextMenu();
 
     function handleSelectFilter(column: TableColumnEnum) {
         dispatch(setSortColumn(column));
@@ -30,11 +33,23 @@ function GoodsTable() {
         dispatch(setFolderOpenState({folderQueue, folderId: openFolderId}));
     }
 
+    const contextMenuData = useMemo(() => [
+        [
+            {label: "+ Добавить", onClick: () => { console.log('Add event')}},
+            {label: "+ Добавить группу", onClick: () => { console.log('Add group event')}},
+        ],
+        [
+            {label: "+ Добавить", onClick: () => { console.log('Add event')}},
+            {label: "+ Добавить группу", onClick: () => { console.log('Add group event')}},
+        ],
+    ], []);
+
     function renderGoods(item: TGood, index: number, folderQueue: string[]): ReactNode {
         return(
             <Fragment key={item.id}>
                 <tr 
                     onClick={() => handleSelectItem(item.id)}
+                    onContextMenu={(e) => onContextMenu(e, item)}
                     className={clsx( index % 2 == 0 ? styles.odd_row : styles.even_row, selectedGoods[item.id] && styles.selected_row)}>
                         <td 
                             className={clsx(styles.name_column, item.type === GoodTypeEnum.group && styles.folder_name_column)}>
@@ -100,6 +115,10 @@ function GoodsTable() {
 
     return(
         <div className={styles.table_container}>
+            {
+                openContextMenu &&
+                <ContextMenu top={points.y} left={points.x} data={contextMenuData}/>
+            }
             <table className={styles.table} ref={tableRef}>
                 <thead>
                     <tr>

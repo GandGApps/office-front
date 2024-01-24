@@ -73,3 +73,17 @@
 .table_folder_opened {
     transform: rotate(90deg);
 }
+
+.contextMenu_item {
+    width: 100%;
+    padding: 5px 10px;
+    text-align: start;
+}
+
+.divider {
+    position: inline-block;
+    width: 90%;
+    height: 2px;
+    background-color: #E2EBF1;
+    border: 1px solid #E2EBF1;
+}
