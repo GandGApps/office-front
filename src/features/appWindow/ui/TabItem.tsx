@@ -30,7 +30,7 @@ function TabItem({tab, active=false, onSelect, onRemove}: TabProps) {
     }
 
     const handleAddTab = () => {
-        onSelect({title: tab.title, id: tab.id})
+        onSelect({title: tab.title, id: tab.id, category_id: tab.category_id})
     }
 
     const handleEnterMouse = () => {

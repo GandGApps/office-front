@@ -1,13 +1,11 @@
 import { Button } from '@components/Button';
 import styles from './Filter.module.scss';
 import { GrayReloadIcon, SearchArrowLeft, SearchArrowRight, SearchRefreshIcon, WhitePlusRoundedIcon } from '@assets/index';
-import { Select } from '@components/Select';
 import { Input } from '@components/Input';
 import { useAppSelector } from '@hooks/useAppSelector';
 import { useAppDispatch } from '@hooks/useAppDispatch';
 import { GoodsViewState } from '..';
 import { setSearch } from '../model/goodsSlice';
-import { useMemo } from 'react';
 import Actions from './Actions';
 
 function FilterContainer() {
@@ -17,8 +15,6 @@ function FilterContainer() {
     function handleSearchChange(e: React.ChangeEvent<HTMLInputElement>) {
         dispatch(setSearch(e.target.value));
     }
-
-    const ACTIONS = useMemo(() => [], []);
 
     return(
         <div className={styles.filter_container}>
