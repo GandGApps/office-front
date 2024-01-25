@@ -28,7 +28,7 @@ function Actions() {
 
     return(
         <div className={styles.actions_container}>
-            <button type='button' onClick={handleButtonClick}>
+            <button type='button' onClick={handleButtonClick} className={styles.actions_button}>
                 Действия
                 <img src={ArrowDown} className={clsx(open && styles.open_arrow)}/>
             </button>
@@ -37,8 +37,13 @@ function Actions() {
                 <div className={clsx(styles.menu, styles.open_menu)}>
                     <button>+Добавить</button>
                     <button>+Добавить группу</button>
-                    <button></button>
-                    <button></button>
+                    <button>Копировать в...</button>
+                    <button>Переместить в...</button>
+                    <button>Редактировать</button>
+                    <button>Удалить</button>
+                    <button>Экспорт в Excel</button>
+                    <button>Раскрыть все</button>
+                    <button>Свернуть все</button>
                 </div>
             }
         </div>

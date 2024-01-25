@@ -1,11 +1,13 @@
 .table_container {
     width: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
     .table {
         width: 100%;
         border-collapse: collapse;
         flex: 1;
+        position: relative;
         thead {
+            position: -webkit-sticky; /* Safari */  
             position: sticky;
             z-index: 2000;
             top: 0;
