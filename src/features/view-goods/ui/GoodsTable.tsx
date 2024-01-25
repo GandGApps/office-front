@@ -39,8 +39,15 @@ function GoodsTable() {
             {label: "+ Добавить группу", onClick: () => { console.log('Add group event')}},
         ],
         [
-            {label: "+ Добавить", onClick: () => { console.log('Add event')}},
-            {label: "+ Добавить группу", onClick: () => { console.log('Add group event')}},
+            {label: "Копировать в...", onClick: () => { console.log('Add event')}},
+            {label: "Переместить в...", onClick: () => { console.log('Add group event')}},
+            {label: "Редактировать", onClick: () => { console.log('Add group event')}},
+            {label: "Удалить", onClick: () => { console.log('Add group event')}},
+        ],
+        [
+            {label: "Экспорт в Excel", onClick: () => { console.log('Add event')}},
+            {label: "Раскрыть все", onClick: () => { console.log('Add group event')}},
+            {label: "Свернуть все", onClick: () => { console.log('Add group event')}},
         ],
     ], []);
 

@@ -2,6 +2,7 @@ import { Fragment, memo } from "react";
 import styles from './ContextMenu.module.scss';
 import Modal from "@components/Modal/ui";
 import { Button } from "@components/Button";
+import useWindowDimensions from "@hooks/useWindowDimension";
 
 type ContextMenuItem = {
     label: string;
@@ -16,13 +17,15 @@ type Props = {
 }
 
 function ContextMenu({backgroundColor, top, left, data}: Props) {
+    const { height } = useWindowDimensions();
     return(
         <Modal>
             <div 
                 className={styles.contextMenu_container}
                 style={{
                     backgroundColor: backgroundColor || "#F6FBFF",
-                    top,
+                    bottom: (height / 2) < top ? (height - top) : undefined,
+                    top: (height / 2) < top ? undefined : top,
                     left
                 }}>
                     {
@@ -41,10 +44,11 @@ function ContextMenu({backgroundColor, top, left, data}: Props) {
                                         ))
                                     }
                                 </ul>
-                                {/* {
+                                {
                                     itemArrIndex < itemsArr.length - 1 &&
                                     <span className={styles.divider}/>
-                                } */}
+                                }
+                                
                             </Fragment>
                         ))
                     }

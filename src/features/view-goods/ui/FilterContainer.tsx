@@ -7,13 +7,19 @@ import { useAppSelector } from '@hooks/useAppSelector';
 import { useAppDispatch } from '@hooks/useAppDispatch';
 import { GoodsViewState } from '..';
 import { setSearch } from '../model/goodsSlice';
+import { useMemo } from 'react';
+import Actions from './Actions';
 
 function FilterContainer() {
     const dispatch = useAppDispatch();
     const { filter: { search } } = useAppSelector<GoodsViewState>(state => state.GoodsView);
+    
     function handleSearchChange(e: React.ChangeEvent<HTMLInputElement>) {
         dispatch(setSearch(e.target.value));
     }
+
+    const ACTIONS = useMemo(() => [], []);
+
     return(
         <div className={styles.filter_container}>
             <Button 
@@ -28,7 +34,7 @@ function FilterContainer() {
                 <img src={WhitePlusRoundedIcon} alt="icon" className={styles.button_icon}/>
                 Добавить группу
             </Button>
-            <Select></Select>
+            <Actions />
             <Button 
                 onClick={() => {console.log('Green button click')}}
                 projectType={['goods_filter_transparent_main']}>

@@ -1,0 +1,33 @@
+.actions_container {
+    position: relative;
+    z-index: 2001;
+    button {
+        cursor: pointer;
+        min-width: 180px;
+        border-radius: 65px;
+        background-color: #C0DAED;
+        border: 1px solid #C0DAED;
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 15px;
+        img {
+            transition: transform .1s linear;
+        }
+        .open_arrow {
+            transform: rotate(180deg);
+        }
+    }
+    button:active {
+        opacity: .7;
+    }
+    .menu {
+        width: 100%;
+        position: absolute;
+        max-height: 0;
+        transition: max-height .1s linear;
+    }
+    .open_menu {
+        max-height: 100%;
+        background-color: #E2EBF1;
+    }
+}
