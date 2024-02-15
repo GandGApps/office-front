@@ -1,13 +1,13 @@
 import "@styles/global.css";
-import { Main } from '../pages/Main'
 import { ErrorBoundary } from "./providers/ErrorBoundary";
 import { ReduxProvider } from "./providers/Redux";
+import { AppRouter } from "./routers/AppRouter";
 
 function App() {
   return (
     <ErrorBoundary>
       <ReduxProvider>
-        <Main />
+        <AppRouter />
       </ReduxProvider>
     </ErrorBoundary>
   )

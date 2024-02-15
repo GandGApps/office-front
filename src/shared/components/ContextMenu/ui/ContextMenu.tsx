@@ -1,8 +1,8 @@
 import { Fragment, memo } from "react";
 import styles from './ContextMenu.module.scss';
-import Modal from "@components/Modal/ui";
 import { Button } from "@components/Button";
 import useWindowDimensions from "@hooks/useWindowDimension";
+import { Portal } from "@components/Portal";
 
 type ContextMenuItem = {
     label: string;
@@ -19,7 +19,7 @@ type Props = {
 function ContextMenu({backgroundColor, top, left, data}: Props) {
     const { height } = useWindowDimensions();
     return(
-        <Modal>
+        <Portal>
             <div 
                 className={styles.contextMenu_container}
                 style={{
@@ -53,7 +53,7 @@ function ContextMenu({backgroundColor, top, left, data}: Props) {
                         ))
                     }
             </div>
-        </Modal>
+        </Portal>
     );
 };
 

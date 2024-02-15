@@ -1,7 +1,59 @@
+import { TFile } from "shared/types";
 import { GoodTypeEnum } from "../enums/goodType.enum";
 import { GoodUnitEnum } from "../enums/goodUnit.enum";
-import { TGood } from "../types/good";
+import { FileTypeEnum } from "@enums/fileType.enum";
 
+export const MOCK_FILES: Map<string, TFile> = new Map([
+    ['Группа', {
+        type: FileTypeEnum.group,
+        created_date: new Date().toISOString(),
+        update_date: new Date().toISOString(),
+        files: new Map([
+            [
+                'Группа', 
+                {
+                    type: FileTypeEnum.group,
+                    created_date: new Date().toISOString(),
+                    update_date: new Date().toISOString(),
+                    files: new Map(),
+                    expanded: false,
+                    name: 'Группа',
+                    path: '/Группа/',
+                    selected: false,
+                    groupDeteails: {
+                        article: "45654",
+                        code: "34436"
+                    }
+                }
+            ]
+        ]),
+        expanded: false,
+        name: 'Группа',
+        path: '/',
+        selected: false,
+        groupDeteails: {
+            article: "45654",
+            code: "34436"
+        }
+    }],
+    ['Кетчуп хайнц томат', {
+        type: FileTypeEnum.good,
+        created_date: new Date().toISOString(),
+        update_date: new Date().toISOString(),
+        name: 'Кетчуп хайнц томат',
+        path: '/',
+        selected: false,
+        details: {
+            article: "45654",
+            code: "34436",
+            left: "0,000",
+            unit: GoodUnitEnum.price,
+            price: "0,00",
+            alcohol: null,
+            sell_location: null
+        }
+    }]
+]);
 export const MOCK_GOODS = [
     {id: "1", name: "Группа", article: "45654", code: "34436", type: GoodTypeEnum.group, left: "0,000", unit: GoodUnitEnum.price, price: "0,00", alcohol: null, sell_location: null, goods: [
         {id: "101", name: "Группа", article: "45654", code: "34436", type: GoodTypeEnum.group, left: "0,000", unit: GoodUnitEnum.price, price: "0,00", alcohol: null, sell_location: null, goods: [

@@ -1,5 +1,8 @@
 import { REDUX_REDUCERS } from "@configs/reduxConfig";
 import { Reducer, Slice, configureStore } from "@reduxjs/toolkit";
+import { enableMapSet } from "immer";
+
+enableMapSet()
 
 function getReducers(): {[key: string]: Reducer} {
     const reducers: {[key: string]: Reducer} = {};
@@ -8,5 +11,8 @@ function getReducers(): {[key: string]: Reducer} {
 }
 
 export const store = configureStore({
-    reducer: getReducers()
+    reducer: getReducers(),
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+        serializableCheck: false
+    })
 });

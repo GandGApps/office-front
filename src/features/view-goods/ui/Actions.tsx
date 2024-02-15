@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import styles from './Actions.module.scss';
+import styles from '../styles/Actions.module.scss';
 import { ArrowDown } from '@assets/index';
 import clsx from 'clsx';
 

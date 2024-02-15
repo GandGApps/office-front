@@ -15,9 +15,10 @@ export default defineConfig({
       "@configs": "/src/shared/configs",
       "@utils": "/src/shared/utils",
       "@components": "/src/shared/components",
+      "@shared": "/src/shared",
       "@styles": "/src/shared/styles",
       "@hooks": "/src/shared/hooks",
-      "@types": "/src/shared/types"
+      "@enums": "/src/shared/enums",
     }
   },
   css: {

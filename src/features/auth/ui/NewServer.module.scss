@@ -1,0 +1,23 @@
+.container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    form {
+        width: 30%;
+        .logo {
+            opacity: .15;
+            width: 70px;
+            margin: 10px 0;
+        }
+        .input_holder {
+            position: relative;
+            margin: 4px 0;
+        }
+        .button_holder {
+            width: 50%;
+            margin: 30px auto;
+        }
+    }
+}

@@ -1,29 +1,35 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 import { TableColumnEnum } from "../constants/tableColumn.enum";
 import { TGood } from "../types/good";
-import { MOCK_GOODS } from "../constants/mock-goods";
-import { updateFolderOpenState } from "./table-helper";
+import { MOCK_FILES, MOCK_GOODS } from "../constants/mock-goods";
+import { TFile } from "shared/types";
+import { getFileFromFilesMap } from "@utils/file-service";
+import { FileTypeEnum } from "@enums/fileType.enum";
 
 export type GoodsViewState = {
     filter: {
         search: string;
     },
     sortColumn: null | TableColumnEnum;
+    files: Map<string, TFile>;
     goods: Array<TGood>;
-    selectedGoods: {[key: string]: boolean};
     status: string | null;
     error: string | null;
+    popupState: 'good' | 'group' | null;
+    popup_data: null;
 }
 
 const initialState: GoodsViewState = {
     filter: {
         search: "",
     },
+    files: MOCK_FILES,
     sortColumn: null,
     goods: [...MOCK_GOODS],
-    selectedGoods: {},
     status: null,
-    error: null
+    error: null,
+    popupState: null,
+    popup_data: null
 }
 
 export const GoodsViewSlice = createSlice({
@@ -64,23 +70,34 @@ export const GoodsViewSlice = createSlice({
 
         /**
          * Select good item in the table
-         * @param action.payload id of good
+         * @param action.payload.path path of file
+         * @param action.payload.name name of file
          */
-        setSelectedItem: (state, action: PayloadAction<string>) => {
-            if (state.selectedGoods[action.payload]) {
-                delete state.selectedGoods[action.payload];
-            }
-            else {
-                state.selectedGoods[action.payload] = true;
+        setSelectedItem: (state, action: PayloadAction<{path: string, name: string}>) => {
+            const file = getFileFromFilesMap(state.files, action.payload.path, action.payload.name);
+            if (file) {
+                file.selected = !file.selected;
             }
         },
 
         /**
-         * Set folder open status
-         * @param action.payload folder depth
+         * Switch group expanded state
+         * @param action.path folder depth
+         * @param action.name folder depth
          */
-        setFolderOpenState: (state, action: PayloadAction<{folderQueue: string[], folderId: string}>) => {
-            state.goods = updateFolderOpenState(state.goods, action.payload.folderQueue, action.payload.folderId, "open" as keyof TGood)
+        setFolderOpenState: (state, action: PayloadAction<{path: string, name: string}>) => {
+            const file = getFileFromFilesMap(state.files, action.payload.path, action.payload.name);    
+            if (file?.type === FileTypeEnum.group) {
+                file.expanded = !file.expanded;
+            }
+        },
+
+        /**
+         * Sets popup state
+         * @param action.payload popup state
+         */
+        setGoodsViewPopup: (state, action: PayloadAction<'good' | 'group' | null>) => {
+            state.popupState = action.payload;
         }
     },
 });
@@ -91,6 +108,7 @@ export const {
     setError,
     setSortColumn,
     setSelectedItem,
-    setFolderOpenState
+    setFolderOpenState,
+    setGoodsViewPopup
 } = GoodsViewSlice.actions;
 export default GoodsViewSlice;

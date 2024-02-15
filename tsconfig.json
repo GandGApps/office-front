@@ -33,7 +33,7 @@
       "@styles/*": ["shared/styles/*"],
       "@utils/*": ["shared/utils/*"],
       "@hooks/*": ["shared/hooks/*"],
-      "@types/*": ["shared/types/*"]
+      "@enums/*": ["shared/enums/*"]
     }
   },
   "include": ["src"],

@@ -1,0 +1,67 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    flex-grow: 1;
+    .auth_logo {
+        width: 10%;
+        padding-top: 5%;
+    }
+    h4 {
+        width: 30%;
+        font-weight: 400;
+    }
+    form {
+        width: 45%;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .input_holder {
+            position: relative;
+            margin: 5px 0;
+            .input_icon {
+                position: absolute;
+                left: 15px;
+                top: 30%;
+            }
+            .select_server_button {
+                position: absolute;
+                right: 3px;
+                bottom: 2px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                border-radius: 20px;
+                padding: 10px;
+                background-color: #658399;
+                border: none;
+                img {
+                    margin-left: 2px;
+                }
+            }
+            .select_server_button:active {
+                opacity: .5;
+            }
+        }
+        .save_server_holder {
+            margin: 20px 0;
+            input {
+                cursor: pointer;
+            }
+            label {
+                font-size: 14px;
+                color: $contrast;
+                cursor: pointer;
+            }
+        }
+    }
+    .error {
+        color: $red;
+        font-size: 16px;
+        font-weight: 300;
+        margin: 20px 0;
+    }
+}

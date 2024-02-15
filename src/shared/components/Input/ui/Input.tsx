@@ -1,12 +1,15 @@
 import clsx from "clsx";
 import styles from './Input.module.scss';
+import { forwardRef } from "react";
 
-type InputProps = { projectType?: string} & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
+type InputProps = { projectType?: string, error?: boolean } & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
 
-function Input({projectType="default", ...props}: InputProps) {
+type Ref = HTMLInputElement;
+
+const Input = forwardRef<Ref, InputProps>(function({projectType="default", error=false, ...props}, ref) {
     return(
-        <input {...props} className={clsx(styles[projectType])}/>
+        <input className={clsx(styles[projectType])} ref={ref} style={{ border: error ?  '1px solid $red' : undefined }} {...props}/>
     );
-};
+});
 
 export default Input;

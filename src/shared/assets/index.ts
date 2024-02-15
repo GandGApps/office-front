@@ -19,6 +19,16 @@ import CloseIcon from './img/close-icon.svg';
 import WhitePlusRoundedIcon from './img/white-plus-rounded-icon.svg';
 import GrayReloadIcon from './img/gray-reload-icon.svg';
 import SelectArrowIcon from './img/select-arrow-icon.svg';
+import PopupCloseIcon from './img/popup-close-icon.svg';
+import PopupCollapseIcon from './img/popup-collapse-icon.svg';
+import PopupStretchIcon from './img/popup-stretch-icon.svg';
+import AuthBackground from './img/auth-background.jpg';
+import AuthLogo from './img/auth-logo.svg';
+import UserIcon from './img/user-icon.svg';
+import LockIcon from './img/lock-icon.svg';
+import NetworkIcon from './img/network-icon.svg';
+import ArrowRightDouble from './img/arrow-right-double.svg';
+import ArrowLeftIcon from './img/arrowLeft-icon.svg';
 
 import SearchRefreshIcon from './img/SearchRefreshIcon';
 import SearchArrowLeft from './img/SearchArrowLeft';
@@ -26,6 +36,7 @@ import SearchArrowRight from './img/SearchArrowRight';
 import FolderIcon from './img/FolderIcon';
 import ColumnFilterArrowIcon from './img/ColumnFilterArrowIcon';
 import TableGoodIcon from './img/GoodIcon';
+
 
 export {
     Logo,
@@ -49,6 +60,16 @@ export {
     WhitePlusRoundedIcon,
     GrayReloadIcon,
     SelectArrowIcon,
+    PopupCloseIcon,
+    PopupCollapseIcon,
+    PopupStretchIcon,
+    AuthBackground,
+    AuthLogo,
+    UserIcon,
+    LockIcon,
+    NetworkIcon,
+    ArrowRightDouble,
+    ArrowLeftIcon,
     SearchRefreshIcon,
     SearchArrowLeft,
     SearchArrowRight,

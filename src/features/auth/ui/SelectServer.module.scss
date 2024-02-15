@@ -1,0 +1,148 @@
+.container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    .header {
+        padding: 20px;
+        a {
+            display: flex;
+            column-gap: 15px;
+            align-items: center;
+            color: $contrast;
+            text-decoration: none;
+            font-size: 18px;
+        }
+    }
+    .table_holder {
+        flex-grow: 1;
+        overflow-y: auto;
+        border-radius: 12px 12px 0 0;
+        border: 1px solid $contrast;
+        border-bottom: none;
+        margin: 0 30px;
+        background-color: $white;
+        table {
+            width: 100%;
+            padding-right: 10px;
+            position: relative;
+            border-collapse: collapse;
+            border-bottom: none;
+            thead {
+                position: sticky;
+                top: 0;
+                z-index: 1;
+                tr {
+                    th {
+                        max-height: 50px;
+                        background-color: $main;
+                        padding: 10px 0;
+                        button {
+                            background: none;
+                            border: none;
+                            color: $white;
+                            font-weight: 300;
+                        }
+                    }
+                    th:first-child {
+                        border-radius: 12px 0 0 0;
+                    }
+                    th:last-child {
+                        border-radius: 0 12px 0 0;
+                    }
+                }
+            }
+            tbody {
+                
+                tr {
+                    cursor: pointer;
+                        border-bottom: 1px solid #8BA1B1;
+                    td {
+                        height: 50px;
+                        white-space: nowrap;
+                        .radio_input {
+                            margin: 0 10px 0 15px;
+                            appearance: none;
+                            min-width: 20px;
+                            min-height: 20px;
+                            border: 2px solid $contrast;
+                            width: 20px;
+                            height: 20px;
+                            border-radius: 100%;
+                            margin-bottom: -5px;
+                            position: relative;
+                        }
+                        .radio_input::before {
+                            content: "*";
+                            color: transparent;
+                            position: absolute;
+                            width: 10px;
+                            height: 10px;
+                            background-color: $contrast;;
+                            border-radius: 100%;
+                            top: 3px;
+                            left: 3px;
+                            transform: scale(0);
+                            transition: all .1s linear;
+                        }
+                        .radio_input:checked::before {
+                            transform: scale(1);
+                        }
+                    }
+                    td:not(:last-child) {
+                        border-right: 1px solid #8BA1B1;
+                    }
+                }
+                tr:active {
+                    opacity: .5;
+                }
+                // tr:not(:last-child) {
+                //     border-bottom: 1px solid #8BA1B1;
+                // }
+            }
+        }
+        
+        .table_holder::after {
+            content: '*';
+            position: absolute;
+            color: transparent;
+            width: 100%;
+            height: 100%;
+            border: 1px solid $black;
+            top: 0;
+            left: 0;
+        }
+    }
+    .table_bottom_border {
+        width: 93.7%;
+        margin: 0 30px;
+        border-top: 1px solid $contrast;
+    }
+    .footer {
+        display: flex;
+        justify-content: flex-end;
+        padding: 20px 40px;
+        column-gap: 10px;
+        a {
+            padding: 10px 20px;
+            border-radius: 38px;
+            background: none;
+            border: 1px solid $contrast;
+            color: $contrast;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            column-gap: 10px;
+            text-decoration: none;
+        }
+    }
+}
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}

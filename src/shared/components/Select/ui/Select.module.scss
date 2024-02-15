@@ -24,9 +24,94 @@
 //     transform: rotate(180deg);
 // }
 
+.default_select_button {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background: $white;
+    border: 1px solid $contrast;
+    border-radius: 65px;
+    padding: 5px 12px;
+    cursor: pointer;
+}
+
+.default_select_button:active {
+    opacity: .5;
+}
+
+.auth_protocol_select_button {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background: $white;
+    border: 1px solid #C0DAED;
+    border-radius: 65px;
+    padding: 10px 12px;
+    cursor: pointer;
+    padding-left: 40px;
+}
+
+.auth_protocol_select_button:active {
+    opacity: .5;
+}
+
+.auth_protocol_placeholder {
+    color: $main;
+}
+
 .select_arrow {
-    position: absolute;
-    right: 15px;
-    top: 10%;
+    width: 15px;
     transition: transform .1s linear;
+}
+.active_select_arrow {
+    transform: rotate(180deg);
+}
+
+.default_options_holder {
+    position: absolute;
+    z-index: 99999;
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    overflow-y: auto;
+    max-height: 150px;
+    button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 5px 20px;
+        text-align: start;
+        
+    }
+    button:hover {
+        background-color: #A6D4F3;
+    }
+}
+.auth_protocol_options_holder {
+    position: absolute;
+    z-index: 99999;
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    overflow-y: auto;
+    max-height: 150px;
+    margin-top: 10px;
+
+    button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 5px 20px;
+        text-align: start;
+        
+    }
+    button:hover {
+        background-color: #A6D4F3;
+    }
 }

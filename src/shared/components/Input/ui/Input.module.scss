@@ -5,6 +5,7 @@
     border: 1px solid $white;
     outline: none;
     padding: 10px 40px 10px 15px;
+    font-size: 16px;
 }
 
 .default::placeholder {
@@ -17,4 +18,34 @@
     border: 1px solid $contrast;
     outline: none;
     margin: 0 5px;
+}
+
+.add-good {
+    border-radius: 65px;
+    border: 1px solid $contrast;
+    outline: none;
+    padding: 5px 10px;
+}
+
+.auth_input {
+    width: 100%;
+    background-color: $white;
+    border-radius: 45px;
+    border: .68px solid #C0DAED;
+    outline: none;
+    padding: 10px 40px 10px 40px;
+}
+
+.auth_server {
+    width: 100%;
+    background-color: $white;
+    border-radius: 45px;
+    border: .68px solid #C0DAED;
+    outline: none;
+    padding: 10px 40px;
+}
+
+.auth_server:disabled {
+    background-color: #C0DAED;
+    border: .68px solid #658399;
 }

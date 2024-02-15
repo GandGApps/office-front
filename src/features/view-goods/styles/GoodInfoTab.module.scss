@@ -1,0 +1,63 @@
+.container {
+    flex: 1;
+    border-top: none;
+    border-radius: 0 7px 7px 7px;
+    padding: 0 5px;
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+    .title {
+        font-size: 18px;
+        font-weight: 400;
+        text-align: center;
+        color: $blue;
+        font-style: italic;
+    }
+    .good_container {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+        border: 1px solid #C0DAED;
+        border-top: none;
+        border-radius: 0 7px 7px 7px;
+        padding: 0 12px;
+        .input_holder {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            column-gap: 10px;
+            span {
+                flex-grow: 1;
+                text-align: end;
+            }
+            input {
+                width: 50%;
+                min-width: 210px;
+                outline: none;
+            }
+        }
+        .select_holder{
+            width: 50%;
+        }
+
+        .input_holder span,
+        .select_holder span {
+            white-space: nowrap;
+            min-width: 220px;
+        }
+    }
+    .price {
+        width: 50%;
+        border: 1px solid #C0DAED;
+        border-radius: 7px;
+        padding: 0 8px;
+        .price_input_holder {
+            display: flex;
+        }
+    }
+    
+    @media screen and (max-width: 600px) {
+        
+    }
+}

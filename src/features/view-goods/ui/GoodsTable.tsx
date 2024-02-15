@@ -1,23 +1,23 @@
 import clsx from 'clsx';
 import { TableColumnEnum } from '../constants/tableColumn.enum';
 import { TABLE_COLUMNS } from '../constants/tableColumns';
-import styles from './GoodsTable.module.scss';
+import styles from '../styles/GoodsTable.module.scss';
 import { ColumnFilterArrowIcon, FolderIcon, TableGoodIcon } from '@assets/index';
 import { useAppSelector } from '@hooks/useAppSelector';
 import { GoodsViewState } from '..';
 import { useAppDispatch } from '@hooks/useAppDispatch';
 import { setSortColumn, setSelectedItem, setFolderOpenState } from '../model/goodsSlice';
-import { GoodTypeEnum } from '../enums/goodType.enum';
-import { TGood } from '../types/good';
 import { Fragment, ReactNode, memo, useMemo } from 'react';
 import { Button } from '@components/Button';
 import useGoodsTableResize from '../hooks/useGoodsTableResize';
 import useTableContextMenu from '../hooks/useTableContextMenu';
 import { ContextMenu } from '@components/ContextMenu';
+import { TFile } from 'shared/types';
+import { FileTypeEnum } from '@enums/fileType.enum';
 
 function GoodsTable() {
     const dispatch = useAppDispatch();
-    const { sortColumn, goods, selectedGoods } = useAppSelector<GoodsViewState>(state => state.GoodsView);
+    const { sortColumn, goods, popupState, files } = useAppSelector<GoodsViewState>(state => state.GoodsView);
     const {onMouseDown, tableRef, columnWidths} = useGoodsTableResize();
     const {onContextMenu, openContextMenu, points} = useTableContextMenu();
 
@@ -25,12 +25,22 @@ function GoodsTable() {
         dispatch(setSortColumn(column));
     }
 
-    function handleSelectItem(id: string) {
-        dispatch(setSelectedItem(id));
+    /**
+     * Selects item
+     * @param path path of file
+     * @param name name of file
+     */
+    function selectItem(path: string, name: string) {
+        dispatch(setSelectedItem({path, name}));
     }
 
-    function handleFolderClick(folderQueue: string[], openFolderId: string) {
-        dispatch(setFolderOpenState({folderQueue, folderId: openFolderId}));
+    /**
+     * Switches group expanded state
+     * @param path path to the file
+     * @param name name of file
+     */
+    function handleFolderClick(path: string, name: string) {
+        dispatch(setFolderOpenState({path, name}));
     }
 
     const contextMenuData = useMemo(() => [
@@ -51,24 +61,24 @@ function GoodsTable() {
         ],
     ], []);
 
-    function renderGoods(item: TGood, index: number, folderQueue: string[]): ReactNode {
+    function renderGoods(item: TFile, index: number): ReactNode {
         return(
-            <Fragment key={item.id}>
+            <Fragment key={item.path + item.name}>
                 <tr 
-                    onClick={() => handleSelectItem(item.id)}
+                    onClick={() => selectItem(item.path, item.name)}
                     onContextMenu={(e) => onContextMenu(e, item)}
-                    className={clsx( index % 2 == 0 ? styles.odd_row : styles.even_row, selectedGoods[item.id] && styles.selected_row)}>
+                    className={clsx( index % 2 == 0 ? styles.odd_row : styles.even_row, item.selected && styles.selected_row)}>
                         <td 
-                            className={clsx(styles.name_column, item.type === GoodTypeEnum.group && styles.folder_name_column)}>
+                            className={clsx(styles.name_column, item.type === FileTypeEnum.group && styles.folder_name_column)}>
                                 <div style={{width: (columnWidths.name - 20)}}>
                                     {
-                                        item.type === GoodTypeEnum.group
+                                        item.type === FileTypeEnum.group
                                         ?
                                         <Button 
-                                            style={{ paddingLeft: 20 * (folderQueue.length - 1)}}
-                                            onClick={(e) => {e.stopPropagation(); handleFolderClick(folderQueue, item.id)}}
+                                            style={{ paddingLeft: 20 * (item.path.split('/').filter(letter => letter !== '').length)}}
+                                            onClick={(e) => {e.stopPropagation(); handleFolderClick(item.path, item.name)}}
                                             projectType={["transparent", "table_folder"]}>
-                                                <span className={(clsx(item.open && styles.table_folder_opened))}>
+                                                <span className={(clsx(item.expanded && styles.table_folder_opened))}>
                                                     <ColumnFilterArrowIcon />
                                                 </span>
                                                 {' '}
@@ -78,7 +88,7 @@ function GoodsTable() {
                                         </Button>
                                         :
                                         <>
-                                            {item.type === GoodTypeEnum.good ? <TableGoodIcon /> : <FolderIcon />}
+                                            {item.type === FileTypeEnum.good ? <TableGoodIcon /> : <FolderIcon />}
                                                 {' '}
                                             {item.name}
                                         </>
@@ -87,34 +97,34 @@ function GoodsTable() {
                         </td>
                         <td className={styles.article_column}
                             style={{minWidth: columnWidths.article}}>
-                            {item.article}
+                            {item.type === FileTypeEnum.good ? item.details.article : item.groupDeteails.article}
                         </td>
                         <td className={styles.code_column}
                             style={{minWidth: columnWidths.code}}>
-                            {item.code}
+                            {item.type === FileTypeEnum.good ? item.details.code : item.groupDeteails.code}
                         </td>
                         <td className={styles.type_column}
                             style={{minWidth: columnWidths.type}}>
                             {item.type}
                         </td>
                         <td className={styles.left_column}>
-                            {item.left}
+                            {item.type === FileTypeEnum.good && item.details.left}
                         </td>
                         <td className={styles.unit_column}>
-                            {item.unit}
+                            {item.type === FileTypeEnum.good && item.details.unit}
                         </td>
                         <td className={styles.price_column}>
-                            {item.price}
+                            {item.type === FileTypeEnum.good && item.details.price}
                         </td>
                         <td className={styles.alcohol_column}>
-                            {item.alcohol}
+                            {item.type === FileTypeEnum.good && item.details.alcohol}
                         </td>
                         <td className={styles.sell_location_column}>
-                            {item.sell_location}
+                            {item.type === FileTypeEnum.good && item.details.sell_location}
                         </td>
                 </tr>
                 {
-                    (item.type === GoodTypeEnum.group && item.open && item.goods && item.goods.length > 0) && item.goods.map((item, index) => renderGoods(item, index, [...folderQueue, item.id]))
+                    (item.type === FileTypeEnum.group && item.expanded && item.files && item.files.size > 0) && Array.from(item.files.values()).map((item, index) => renderGoods(item, index))
                 }
             </Fragment>
         )
@@ -169,7 +179,8 @@ function GoodsTable() {
                 </thead>
                 <tbody>
                     {
-                        goods.map((item, index) => renderGoods(item, index, [item.id]))
+                        Array.from(files.values()).map((item, index) => renderGoods(item, index))
+                        // files.values().map((item, index) => renderGoods(item, index, [item.id]))
                     }
                 </tbody>
             </table>
